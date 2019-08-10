@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rails Group Task Manager</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top" style="background: #F1F1F1">
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Menu
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li class="dropdown-header"><u>Lists</u></li>
+        <li><%= link_to "Create List", new_list_path %></li>
+        
+        <li><%= link_to "View Lists", lists_path %></li>
+        <li role="separator" class="divider"></li>
+      <li><%= link_to "Login", new_user_session_path %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    </ul>
+  </div>
+  <ul><ul><h1 style="float: auto; padding: -100px;">Group Task Manager</h1></ul></ul>
+</nav>
+
+<ul>
+  <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+</ul>
+
+<%= yield %>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+
+</body>
+</html>

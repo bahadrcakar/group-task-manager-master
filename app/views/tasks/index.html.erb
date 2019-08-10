@@ -1,0 +1,16 @@
+<!-- when a user clicks to view tasks, it links to 'tasks/index' to view all tasks with their associated lists -->
+
+<h2>Here are all tasks:</h3>
+<% @task.each do |task| %>
+  <h3>
+    <ul> 
+      > <%= task.name %> 
+      <ul>
+        <h5>
+          <%= button_to "Task Complete?", list_task_path(task.list, task), :method => "delete", :class => "destroy" %>
+        </h5>
+      </ul> 
+    </ul>
+  </h3>
+  
+  <% end %>

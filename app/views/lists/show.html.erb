@@ -1,0 +1,17 @@
+<ul>
+  <h3><%= @list.name %></h3>
+    <%= form_for([@list, Task.new]) do |f| %>
+      <%= f.text_field :name, placeholder: "Create a task" %>
+      <%= f. submit %>
+    <% end %>
+
+
+  <ul>
+    <%= render @list.tasks %>
+    <% if !@list.tasks.nil? %>
+    <%= button_to "Task Complete", lists_path, :method => "destroy", :class => "destroy" %>
+    <% else %>
+    <h4>There are currently no tasks associated to this list!</h4>
+    <% end %>
+  </ul>
+</ul>
